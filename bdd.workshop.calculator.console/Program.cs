@@ -23,9 +23,20 @@ namespace bdd.workshop.calculator.console
                 case ("/"):
                     Console.WriteLine(Operator.Divide(a, b));
                     break;
-                default:
-                    Console.WriteLine("Possible operators: +,-,x,/: i.e.: 3 + 4");
+                case "sqrt":
+                    if (a >= 0)
+                    {
+                        Console.WriteLine(Math.Sqrt(a));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: No se puede calcular la raíz cuadrada de un número negativo.");
+                    }
                     break;
+                default:
+                    Console.WriteLine("Possible operators: +,-,x,/,sqrt: i.e.: 3 + 4");
+                    break;
+ 
             }
         }
     }

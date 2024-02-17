@@ -32,6 +32,18 @@ namespace bdd.workshop.calculator
 
         public static int Substract(int a, int b) => a - b;
 
+        public static double Root(double a, double b) => Math.Pow(a, (1/b));
+
+        public static double SqrRoot(double square)
+        {
+            if (square<0)
+            {
+                throw new InvalidOperationException("Argument must be greater then or equal to zero.");
+            }
+            return Math.Sqrt(square);
+        }
+        public static double Pow(double a, double b) => Math.Pow(a, b);
+
         public static PrimeNumberInfo IsPrimeNumber(int number)
         {
             var result = number == 0 ? PrimeNumberInfo.Unknown : number == 1 ? PrimeNumberInfo.No : PrimeNumberInfo.Yes ;            

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\bdd.workshop.calculator\bdd.workshop.calculator.csproj" />
+    <ProjectReference Include="..\bdd.workshop.calculator.web\TestCalculadora.calculadora.csproj" />
   </ItemGroup>
 
 </Project>
