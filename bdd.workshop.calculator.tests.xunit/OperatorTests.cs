@@ -5,6 +5,32 @@ namespace bdd.workshop.calculator.tests.xunit
 {
     public class OperatorTests
     {
+        [Theory(DisplayName = "Square Root Theory")]
+        [Trait("TestType", "Theory")]
+        [InlineData(0, 0)]
+        [InlineData(1, 1)]
+        [InlineData(4, 2)]
+        [InlineData(9, 3)]
+        [InlineData(16, 4)]
+        [InlineData(25, 5)]
+        [InlineData(36, 6)]
+        [InlineData(49, 7)]
+        [InlineData(64, 8)]
+        [InlineData(81, 9)]
+        [InlineData(-1, double.MinValue)]
+        public void CalculateSquareRoot(double square, double root)
+        {
+            if (square < 0)
+            {
+                var ex = Assert.Throws<InvalidOperationException>(() => Operator.SqrRoot(square));
+                Assert.Equal("Argument must be greater than or equal to zero.", ex.Message);
+            }
+            else
+            {
+                Assert.True(Operator.SqrRoot(square) == root);
+            }
+        }
+
         [Fact]
         [Trait("TestType", "UT")]
         public void BasicAdd()
@@ -24,7 +50,7 @@ namespace bdd.workshop.calculator.tests.xunit
             Assert.True(Operator.Multiply(a, b) == result);
         }
 
-        [Theory(DisplayName ="Division Theory")]
+        [Theory(DisplayName = "Division Theory")]
         [Trait("TestType", "Theory")]
         [InlineData(20, 4, 5)]
         [InlineData(10, 4, 2.5)]
@@ -61,8 +87,8 @@ namespace bdd.workshop.calculator.tests.xunit
         //    Assert.True(Operator.Divide(a, b) == result);
         //}
 
-        [Theory(DisplayName ="Prime Number Theory")]
-        [Trait("TestType","Theory")]
+        [Theory(DisplayName = "Prime Number Theory")]
+        [Trait("TestType", "Theory")]
         [InlineData(0, PrimeNumberInfo.Unknown)]
         [InlineData(1, PrimeNumberInfo.No)]
         [InlineData(2, PrimeNumberInfo.Yes)]
@@ -78,9 +104,10 @@ namespace bdd.workshop.calculator.tests.xunit
         [InlineData(997, PrimeNumberInfo.Yes)]
         [InlineData(98689, PrimeNumberInfo.Yes)]
         [InlineData(86743, PrimeNumberInfo.Yes)]
-        public void IsThisNumberPrime(int number,PrimeNumberInfo isPrimeNumber)
+        public void IsThisNumberPrime(int number, PrimeNumberInfo isPrimeNumber)
         {
-            Assert.True(isPrimeNumber == Operator.IsPrimeNumber(number) );
+            Assert.True(isPrimeNumber == Operator.IsPrimeNumber(number));
         }
     }
 }
+
